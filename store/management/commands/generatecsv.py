@@ -32,6 +32,13 @@ class Command(BaseCommand):
             os.mkdir(csv_dir)
         return csv_dir
 
+    def do_some_asnyc_task(self, csv_file_path):
+        '''
+        This can be any task, by which this file is being
+        sent to the user, like an email
+        '''
+        pass
+
     def generate_csv(self, file_id):
         books = self._fetch_data()
         csv_dir = self._get_csv_dir()
@@ -42,6 +49,9 @@ class Command(BaseCommand):
             writer.writerow(['Book Name', 'ISBN Number'])
             for book in books:
                 writer.writerow([book.name, book.isbn_number])
+
+        # once the file is generated, you can send it via email
+        self.do_some_asnyc_task(csv_file_path)
 
     def add_arguments(self, parser):
         parser.add_argument('file_id', nargs='?', help='Specify File Id here')
