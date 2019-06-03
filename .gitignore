@@ -24,3 +24,4 @@ src/*/static/admin
 local.env
 
 csvfile/*
+csvlogs/*
